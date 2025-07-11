@@ -1,0 +1,26 @@
+type Query {
+  job(id: ID!): Job
+  jobs: [Job!]
+  company(id: ID!): Company
+}
+
+type Company {
+  id: ID!
+  name: String!
+  description: String
+  jobs: [Job!]!
+}
+
+"""
+The job ad posted on the website
+"""
+type Job {
+  id: ID!
+  title: String!
+  """
+  The __date__ on which the job was posted, in ISO-8601 format. E.g `2025-07-12`
+  """
+  date: String!
+  company: Company!
+  description: String
+}
