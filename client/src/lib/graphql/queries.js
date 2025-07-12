@@ -109,6 +109,7 @@ export const createJobMutation = gql`
   ${jobDetailFragment}
 `;
 
+// unused after moving to useMutation in CreateJob page
 export async function createJob({ title, description }) {
   // const { job } = await client.request(createJobMutation, {
   //   input: {
