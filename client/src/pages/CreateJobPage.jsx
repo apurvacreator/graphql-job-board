@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useCreateJob } from "../lib/graphql/hooks";
+import { useCreateJob } from "../lib/hooks";
 
 function CreateJobPage() {
   const navigate = useNavigate();

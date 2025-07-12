@@ -4,7 +4,7 @@ import {
   jobByIdQuery,
   jobsQuery,
   createJobMutation,
-} from "./queries";
+} from "./graphql/queries";
 
 export function useCompany(id) {
   const { data, loading, error } = useQuery(
