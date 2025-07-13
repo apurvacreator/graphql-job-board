@@ -1,10 +1,11 @@
-import { GraphQLError } from "graphql";
+import { GraphQLError, isType } from "graphql";
 import {
   createJob,
   deleteJob,
   getJob,
   getJobs,
   getJobsByCompany,
+  getJobsCount,
   updateJob,
 } from "./db/jobs.js";
 import { getCompany } from "./db/companies.js";
@@ -27,7 +28,11 @@ export const resolvers = {
       }
       return job;
     },
-    jobs: () => getJobs(),
+    jobs: async (_root, { limit, offset }) => {
+      const jobs = await getJobs(limit, offset);
+      const totalCount = await getJobsCount();
+      return { items: jobs, totalCount };
+    },
   },
 
   Mutation: {
